@@ -8,8 +8,6 @@ import com.yesi.api_exercise.model.Hotel;
 
 @Mapper(componentModel = "spring")
 public interface HotelMapper {
-
     Hotel toEntity(HotelRequestDTO hotelRequestDTO);
-
     HotelResponseDTO toResponseDTO(Hotel hotel);
 }
