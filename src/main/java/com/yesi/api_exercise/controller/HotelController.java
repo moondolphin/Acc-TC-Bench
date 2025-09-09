@@ -1,5 +1,6 @@
 package com.yesi.api_exercise.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import com.yesi.api_exercise.service.HotelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -24,5 +26,12 @@ public class HotelController {
     public ResponseEntity<List<HotelResponseDTO>> findAllHotels(){
         return ResponseEntity.ok(hotelService.findAllHotels());
     } 
+
+    @GetMapping("/hotels?dateFrom={availableFrom}&dateTo={availableTo}&destination={place}")
+    public ResponseEntity<List<HotelResponseDTO>> findAllHotelsByDateAndPlace(@RequestParam String availableFrom,
+        @RequestParam String availableTo,
+        @RequestParam String place){
+        return ResponseEntity.ok(hotelService.findAllHotelsByDateAndPlace(availableFrom, availableTo, place));
+    }
     
 }
