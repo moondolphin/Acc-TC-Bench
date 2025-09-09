@@ -1,20 +1,20 @@
-package com.yesi.api_exercise.repository;
+package com.yesi.api_exercise.dataseed;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import com.yesi.api_exercise.repository.HotelRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.yesi.api_exercise.dto.HotelResponseDTO;
 import com.yesi.api_exercise.model.Hotel;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Component
-public class HotelData implements CommandLineRunner{
+public class DataLoader implements CommandLineRunner{
 
     // Formatea las fechas en texto dd/MM/yyyy
     private DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
