@@ -4,10 +4,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import com.yesi.api_exercise.repository.FlightRepository;
 import com.yesi.api_exercise.repository.HotelRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.yesi.api_exercise.model.Flight;
 import com.yesi.api_exercise.model.Hotel;
 
 import lombok.RequiredArgsConstructor;
@@ -20,9 +22,12 @@ public class DataLoader implements CommandLineRunner{
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private final HotelRepository hotelRepository;
 
+    private final FlightRepository flightRepository;
+
     @Override
     public void run(String... args) throws Exception {
         loadHotels();
+        loadFlights();
     }
 
     private void loadHotels() {
@@ -38,5 +43,15 @@ public class DataLoader implements CommandLineRunner{
                 Hotel.builder().codeHotel("EC-0003").name("El Campín").place("Bogotá").roomType("Triple").pricePerNight(5300.0).availableFrom(LocalDate.parse("22/02/2022", dateFormatter)).availableTo(LocalDate.parse("16/04/2022", dateFormatter)).isBooked(true).build()
         );
         hotelRepository.saveAll(hotelList);
+    }
+
+    private void loadFlights(){
+        List<Flight> flightList = List.of(
+            Flight.builder().flightNumber("BAPI-1235").origin("Buenos Aires").destination("Puerto Iguazú").seatType("Economy").price(6500.0).departureDate(LocalDate.parse("10/02/2022", dateFormatter)).returnDate(LocalDate.parse("15/02/2022", dateFormatter)).build()
+            // Flight.builder().flightNumber(null).origin(null).destination().seatType().price().departureDate().returnDate().build(),
+            // Flight.builder().flightNumber(null).origin(null).destination().seatType().price().departureDate().returnDate().build(),
+            // Flight.builder().flightNumber(null).origin(null).destination().seatType().price().departureDate().returnDate().build(),
+            );
+            flightRepository.saveAll(flightList);  
     }
 }
