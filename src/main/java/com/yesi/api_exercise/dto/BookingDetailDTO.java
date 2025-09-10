@@ -3,8 +3,6 @@ package com.yesi.api_exercise.dto;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.yesi.api_exercise.model.PaymentMethod;
-import com.yesi.api_exercise.model.Person;
 
 public record BookingDetailDTO(
     LocalDate dateFrom,
@@ -13,8 +11,8 @@ public record BookingDetailDTO(
     String hotelCode,
     Integer peopleAmount,
     String roomType,
-    List<Person> people,
-    List<PaymentMethod> paymentMethod
+    List<PersonDTO> people,
+    List<PaymentMethodDTO> paymentMethod
 
 ) 
 {}
