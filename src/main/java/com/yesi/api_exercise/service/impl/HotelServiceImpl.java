@@ -1,14 +1,15 @@
-package com.yesi.api_exercise.service;
+package com.yesi.api_exercise.service.impl;
 
-import com.yesi.api_exercise.dto.BookingRequestDTO;
-import com.yesi.api_exercise.dto.BookingResponseDTO;
-import com.yesi.api_exercise.dto.HotelResponseDTO;
+import com.yesi.api_exercise.dto.request.BookingRequestDTO;
+import com.yesi.api_exercise.dto.response.BookingResponseDTO;
+import com.yesi.api_exercise.dto.response.HotelResponseDTO;
 import com.yesi.api_exercise.mapper.BookingMapper;
 import com.yesi.api_exercise.mapper.HotelMapper;
 import com.yesi.api_exercise.model.Booking;
 import com.yesi.api_exercise.model.Hotel;
 import com.yesi.api_exercise.repository.BookingRepository;
 import com.yesi.api_exercise.repository.HotelRepository;
+import com.yesi.api_exercise.service.HotelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

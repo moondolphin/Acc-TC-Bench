@@ -1,9 +1,9 @@
 package com.yesi.api_exercise.mapper;
 
-import com.yesi.api_exercise.dto.BookingRequestDTO;
+import com.yesi.api_exercise.dto.request.BookingRequestDTO;
 import org.mapstruct.Mapper;
 
-import com.yesi.api_exercise.dto.BookingResponseDTO;
+import com.yesi.api_exercise.dto.response.BookingResponseDTO;
 import com.yesi.api_exercise.model.Booking;
 import org.mapstruct.Mapping;
 

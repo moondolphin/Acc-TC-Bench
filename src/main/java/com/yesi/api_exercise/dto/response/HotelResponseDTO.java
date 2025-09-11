@@ -1,4 +1,4 @@
-package com.yesi.api_exercise.dto;
+package com.yesi.api_exercise.dto.response;
 
 import java.time.LocalDate;
 

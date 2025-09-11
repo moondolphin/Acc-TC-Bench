@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yesi.api_exercise.dto.FlightResponseDTO;
+import com.yesi.api_exercise.dto.response.FlightResponseDTO;
 import com.yesi.api_exercise.service.FlightService;
 
 
