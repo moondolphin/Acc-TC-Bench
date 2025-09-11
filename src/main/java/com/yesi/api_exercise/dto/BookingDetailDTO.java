@@ -8,7 +8,7 @@ public record BookingDetailDTO(
     LocalDate dateFrom,
     LocalDate dateTo,
     String destination,
-    String hotelCode,
+    String codeHotel,
     Integer peopleAmount,
     String roomType,
     List<PersonDTO> people,

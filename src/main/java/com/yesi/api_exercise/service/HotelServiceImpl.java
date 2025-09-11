@@ -1,8 +1,13 @@
 package com.yesi.api_exercise.service;
 
+import com.yesi.api_exercise.dto.BookingRequestDTO;
+import com.yesi.api_exercise.dto.BookingResponseDTO;
 import com.yesi.api_exercise.dto.HotelResponseDTO;
+import com.yesi.api_exercise.mapper.BookingMapper;
 import com.yesi.api_exercise.mapper.HotelMapper;
+import com.yesi.api_exercise.model.Booking;
 import com.yesi.api_exercise.model.Hotel;
+import com.yesi.api_exercise.repository.BookingRepository;
 import com.yesi.api_exercise.repository.HotelRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +24,9 @@ public class HotelServiceImpl implements HotelService {
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private final HotelRepository hotelRepository;
+    private final BookingRepository bookingRepository;
     private final HotelMapper hotelMapper;
+    private final BookingMapper bookingMapper;
 
     @Override
     public List<HotelResponseDTO> findAllHotels() {
@@ -38,5 +45,24 @@ public class HotelServiceImpl implements HotelService {
             hotel.getPlace().equals(place)).map(hotelMapper::toResponseDTO)
             .toList();
     
+    }
+
+    @Override
+    public BookingResponseDTO makeReservationHotel(BookingRequestDTO bookingRequestDTO){
+        Booking booking = mapBookingToHotel(bookingRequestDTO);
+        Booking save = bookingRepository.save(booking);
+        BookingResponseDTO bookingResponse = bookingMapper.toResponseDTO(save);
+        return bookingResponse;
+    }
+
+    private Booking mapBookingToHotel(BookingRequestDTO bookingRequestDTO){
+        return Booking.builder()
+        .username(bookingRequestDTO.userName())
+        .dateFrom(bookingRequestDTO.booking().dateFrom())
+        .dateTo(bookingRequestDTO.booking().dateTo())
+        .destination(bookingRequestDTO.booking().destination())
+        .codeHotel(bookingRequestDTO.booking().codeHotel())
+        .peopleAmount(bookingRequestDTO.booking().peopleAmount())
+        .build();
     }
 }

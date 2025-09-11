@@ -2,13 +2,14 @@ package com.yesi.api_exercise.dto;
 
 import java.time.LocalDate;
 
-public record HotelResponseDTO(
-        String codeHotel,
+public record BookingResponseDTO(
+    String codeHotel,
         String name,
         String place,
         String roomType,
         Double pricePerNight,
-        LocalDate availableFrom,
-        LocalDate availableTo) {
-
+        LocalDate dateFrom,
+        LocalDate dateTo
+) {
+    
 }
