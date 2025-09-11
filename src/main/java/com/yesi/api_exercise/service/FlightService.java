@@ -8,5 +8,6 @@ import com.yesi.api_exercise.dto.response.FlightResponseDTO;
 
 public interface FlightService {
     List<FlightResponseDTO> getAllFlights();
+
     
 }

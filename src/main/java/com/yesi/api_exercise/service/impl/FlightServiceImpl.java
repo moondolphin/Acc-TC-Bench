@@ -28,4 +28,6 @@ public class FlightServiceImpl implements FlightService {
         .map(flightMapper::toResponseDTO)
         .collect(Collectors.toList());
     }
+
+
 }
