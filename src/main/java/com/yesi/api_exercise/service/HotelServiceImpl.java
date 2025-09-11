@@ -49,20 +49,9 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public BookingResponseDTO makeReservationHotel(BookingRequestDTO bookingRequestDTO){
-        Booking booking = mapBookingToHotel(bookingRequestDTO);
+        Booking booking = bookingMapper.toEntity(bookingRequestDTO);
         Booking save = bookingRepository.save(booking);
-        BookingResponseDTO bookingResponse = bookingMapper.toResponseDTO(save);
-        return bookingResponse;
-    }
 
-    private Booking mapBookingToHotel(BookingRequestDTO bookingRequestDTO){
-        return Booking.builder()
-        .username(bookingRequestDTO.userName())
-        .dateFrom(bookingRequestDTO.booking().dateFrom())
-        .dateTo(bookingRequestDTO.booking().dateTo())
-        .destination(bookingRequestDTO.booking().destination())
-        .codeHotel(bookingRequestDTO.booking().codeHotel())
-        .peopleAmount(bookingRequestDTO.booking().peopleAmount())
-        .build();
+        return bookingMapper.toResponseDTO(save, bookingRequestDTO);
     }
 }
