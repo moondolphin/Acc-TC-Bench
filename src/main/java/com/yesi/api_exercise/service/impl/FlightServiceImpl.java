@@ -1,6 +1,5 @@
 package com.yesi.api_exercise.service.impl;
 
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,12 +21,10 @@ public class FlightServiceImpl implements FlightService {
     private final FlightMapper flightMapper;
 
     @Override
-    public List<FlightResponseDTO> getAllFlights(){
+    public List<FlightResponseDTO> getAllFlights() {
         List<Flight> flights = flightRepository.findAll();
         return flights.stream()
-        .map(flightMapper::toResponseDTO)
-        .collect(Collectors.toList());
+                .map(flightMapper::toResponseDTO)
+                .collect(Collectors.toList());
     }
-
-
 }

@@ -18,6 +18,7 @@ public interface BookingMapper {
     @Mapping(target = "peopleAmount", source = "booking.peopleAmount")
     Booking toEntity(BookingRequestDTO bookingRequestDTO);
 
+
     @Mapping(target = "codeHotel", source = "booking.codeHotel")
     @Mapping(target = "destination", source = "booking.destination")
     @Mapping(target = "dateFrom", source = "booking.dateFrom")
