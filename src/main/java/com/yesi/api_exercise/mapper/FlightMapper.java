@@ -10,6 +10,4 @@ import com.yesi.api_exercise.model.Flight;
 public interface FlightMapper {
     Flight toEntity(FlightRequestDTO flightRequestDTO);
     FlightResponseDTO toResponseDTO(Flight flight);
-
-    
 }

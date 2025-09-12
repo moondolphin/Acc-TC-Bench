@@ -11,7 +11,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -28,5 +27,4 @@ public class Booking {
     private String destination;
     private String codeHotel;
     private Integer peopleAmount;
-
 }
