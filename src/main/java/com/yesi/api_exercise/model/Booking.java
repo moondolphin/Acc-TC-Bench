@@ -11,21 +11,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-public class Flight {
+public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String flightNumber;
-    private String origin;
-    private String destination;
-    private String seatType;
-    private Double price;
-    private LocalDate departureDate;
-    private LocalDate returnDate;
 
+    private String username;
+    private LocalDate dateFrom;
+    private LocalDate dateTo;
+    private String destination;
+    private String codeHotel;
+    private Integer peopleAmount;
 }

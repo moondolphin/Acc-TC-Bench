@@ -3,7 +3,7 @@ package com.yesi.api_exercise.dto;
 import java.time.LocalDate;
 
 public record HotelResponseDTO(
-        String codeHotel,
+        String hotelCode,
         String name,
         String place,
         String roomType,
