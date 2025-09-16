@@ -4,11 +4,13 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.yesi.api_exercise.validations.ValidDates;
 
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
+@ValidDates(before = "dateFrom", after="dateTo", message = "The arrival date must be lower than the departure date")
 public record BookingDetailDTO(
                 LocalDate dateFrom,
                 LocalDate dateTo,
