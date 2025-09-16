@@ -9,6 +9,7 @@ import com.yesi.api_exercise.dto.request.BookingRequestDTO;
 import com.yesi.api_exercise.dto.response.BookingResponseDTO;
 import com.yesi.api_exercise.service.BookingService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -18,7 +19,7 @@ public class BookingController {
     private final BookingService bookingService;
 
     @PostMapping("/booking")
-    public ResponseEntity<BookingResponseDTO> makeBookingHotel(@RequestBody BookingRequestDTO bookingRequestDTO) {
+    public ResponseEntity<BookingResponseDTO> makeBookingHotel(@Valid @RequestBody BookingRequestDTO bookingRequestDTO) {
         return ResponseEntity.ok(bookingService.makeReservationHotel(bookingRequestDTO));
     }
 }
