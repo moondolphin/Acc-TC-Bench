@@ -4,23 +4,27 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.yesi.api_exercise.validations.ValidDates;
+
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
-@ValidDates(before = "dateFrom", after="dateTo", message = "The arrival date must be lower than the departure date")
 public record BookingDetailDTO(
-                LocalDate dateFrom,
-                LocalDate dateTo,
-                String destination,
-                String codeHotel,
+        @Future
+        LocalDate dateFrom,
 
-                @NotNull(message = "La cantidad de personas no puede ser nula.") 
-                @Min(value = 1, message = "La cantidad de personas debe ser como mínimo 1.") 
-                Integer peopleAmount,
+        @Future
+        LocalDate dateTo,
+
+        String destination,
+        String codeHotel,
+
+        @NotNull(message = "La cantidad de personas no puede ser nula.")
+        @Min(value = 1, message = "La cantidad de personas debe ser como mínimo 1.")
+        Integer peopleAmount,
 
                 String roomType,
                 @Valid List<PersonDTO> people,
@@ -39,4 +43,12 @@ public record BookingDetailDTO(
                         default -> true; // Devuelve true si aplica el tipo de habitacion
                 };
         }
+
+        @AssertTrue(message = "La fecha de entrada debe ser anterior a la fecha de salida")
+        public boolean isDateRangeValid() {
+        if (dateFrom == null || dateTo == null) {
+            return true;
+        }
+        return dateFrom.isBefore(dateTo);
+    }
 }
