@@ -2,6 +2,8 @@ package com.yesi.api_exercise.controller;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.yesi.api_exercise.dto.response.HotelResponseDTO;
@@ -21,9 +23,9 @@ public class HotelController {
         return ResponseEntity.ok(hotelService.findAllHotels());
     }
 
-    @GetMapping("/hotels?dateFrom={availableFrom}&dateTo={availableTo}&destination={place}")
-    public ResponseEntity<List<HotelResponseDTO>> findAllHotelsByDateAndPlace(@RequestParam LocalDate availableFrom,
-            @RequestParam LocalDate availableTo,
+    @GetMapping("/hotels1")
+    public ResponseEntity<List<HotelResponseDTO>> findAllHotelsByDateAndPlace(@RequestParam @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate availableFrom,
+            @RequestParam @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate availableTo,
             @RequestParam String place) {
         return ResponseEntity.ok(hotelService.findAllHotelsByDateAndPlace(availableFrom, availableTo, place));
     }

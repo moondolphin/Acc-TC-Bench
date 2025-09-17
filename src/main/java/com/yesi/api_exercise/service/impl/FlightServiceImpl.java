@@ -1,9 +1,7 @@
 package com.yesi.api_exercise.service.impl;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import com.yesi.api_exercise.exception.LocalDateException;
@@ -37,10 +35,6 @@ public class FlightServiceImpl implements FlightService {
 
         if (departureDate.isAfter(returnDate)) {
             throw new LocalDateException("La fecha de ida debe ser menor a la de vuelta.");
-        }
-
-        if (returnDate.isBefore(departureDate)) {
-            throw new LocalDateException("La fecha de vuelta debe ser mayor a la de ida.");
         }
 
         List<Flight> flights = flightRepository.findAll();
