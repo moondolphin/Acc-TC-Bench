@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yesi.api_exercise.validations.ValidDates;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -22,8 +23,8 @@ public record BookingDetailDTO(
                 Integer peopleAmount,
 
                 String roomType,
-                List<PersonDTO> people,
-                List<PaymentMethodDTO> paymentMethod) {
+                @Valid List<PersonDTO> people,
+                @Valid List<PaymentMethodDTO> paymentMethod) {
 
 
         @AssertTrue(message = "El tipo de habitación seleccionada no coincide con la cantidad de personas que se alojarán en ella.")
