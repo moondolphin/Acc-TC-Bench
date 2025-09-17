@@ -18,12 +18,12 @@ public class FlightController {
 
     private final FlightService flightService;
 
-    @GetMapping("/flights")
+    @GetMapping("/")
     public ResponseEntity<List<FlightResponseDTO>> getAllFlights() {
         return ResponseEntity.ok(flightService.getAllFlights());
     }
 
-    @GetMapping("/flights?departureDate={departureDate}&returnDate={returnDate}&destination={destination}&origin={origin}")
+    @GetMapping("/flights")
     public ResponseEntity<List<FlightResponseDTO>> findAllFlightsByDateAndPlaceAndOrigin(@RequestParam @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate departureDate,
                                                                               @RequestParam @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate returnDate,
                                                                               @RequestParam String destination,
