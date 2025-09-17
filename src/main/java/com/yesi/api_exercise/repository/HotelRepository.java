@@ -7,5 +7,6 @@ import com.yesi.api_exercise.model.Hotel;
 @Repository
 public interface HotelRepository extends JpaRepository <Hotel,Integer>{
 
+    boolean existsByPlace(String place);
     
 } 

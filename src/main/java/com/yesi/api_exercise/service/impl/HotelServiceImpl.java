@@ -36,11 +36,11 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<HotelResponseDTO> findAllHotelsByDateAndPlace(String availableFrom, String availableTo, String place) {
+    public List<HotelResponseDTO> findAllHotelsByDateAndPlace(LocalDate availableFrom, LocalDate availableTo, String place) {
         List<Hotel> hotels = hotelRepository.findAll();
         return hotels.stream()
-                .filter(hotel -> hotel.getAvailableFrom().isBefore(LocalDate.parse(availableFrom, dateFormatter)) &&
-                        hotel.getAvailableTo().isAfter(LocalDate.parse(availableTo, dateFormatter)) &&
+                .filter(hotel -> hotel.getAvailableFrom().isBefore(availableFrom) &&
+                        hotel.getAvailableTo().isAfter(availableTo) &&
                         hotel.getPlace().equals(place))
                 .map(hotelMapper::toResponseDTO)
                 .toList();
