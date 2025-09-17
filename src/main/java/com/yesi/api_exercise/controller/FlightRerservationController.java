@@ -1,5 +1,6 @@
 package com.yesi.api_exercise.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ public class FlightRerservationController {
 
     @PostMapping("/flight-reservation")
     public ResponseEntity<FlightReservationResponseDTO> makeFlightReservation(
-            @RequestBody FlightReservationRequestDTO flightReservationRequestDTO) {
+       @Valid @RequestBody FlightReservationRequestDTO flightReservationRequestDTO) {
         return ResponseEntity.ok(flightReservationService.makeFlightReservation(flightReservationRequestDTO));
     }
 }

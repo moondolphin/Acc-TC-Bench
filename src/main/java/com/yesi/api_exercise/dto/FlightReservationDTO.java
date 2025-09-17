@@ -1,5 +1,7 @@
 package com.yesi.api_exercise.dto;
 
+import jakarta.validation.Valid;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -11,6 +13,6 @@ public record FlightReservationDTO(
                 String flightNumber,
                 Integer seats,
                 String seatType,
-                List<PersonDTO> people,
-                List<PaymentMethodDTO> paymentMethod) {
+                @Valid List<PersonDTO> people,
+                @Valid List<PaymentMethodDTO> paymentMethod) {
 }
