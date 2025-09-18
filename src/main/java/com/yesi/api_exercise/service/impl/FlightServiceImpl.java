@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.yesi.api_exercise.exception.PlaceException;
 import com.yesi.api_exercise.exception.LocalDateException;
 import com.yesi.api_exercise.service.FlightService;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,13 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public List<FlightResponseDTO> findAllFlightsByDateAndPlaceAndOrigin(LocalDate departureDate, LocalDate returnDate, String destination, String origin) {
+        if (flightRepository.existsByOrigin(origin)){
+            throw new PlaceException("El origen elegido no existe");
+        }
+
+        if (flightRepository.existsByDestination(destination)){
+            throw new PlaceException("El destino elegido no existe");
+        }
 
         if (departureDate.isAfter(returnDate)) {
             throw new LocalDateException("La fecha de ida debe ser menor a la de vuelta.");

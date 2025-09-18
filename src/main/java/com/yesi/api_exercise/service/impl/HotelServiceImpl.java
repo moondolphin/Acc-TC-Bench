@@ -2,8 +2,9 @@ package com.yesi.api_exercise.service.impl;
 
 
 import com.yesi.api_exercise.dto.response.HotelResponseDTO;
-import com.yesi.api_exercise.exception.DestinationException;
+
 import com.yesi.api_exercise.exception.LocalDateException;
+import com.yesi.api_exercise.exception.PlaceException;
 import com.yesi.api_exercise.mapper.HotelMapper;
 import com.yesi.api_exercise.model.Hotel;
 import com.yesi.api_exercise.repository.HotelRepository;
@@ -42,7 +43,7 @@ public class HotelServiceImpl implements HotelService {
         }
 
         if (!hotelRepository.existsByPlace(place)) {
-            throw new DestinationException("El destino elegido no existe");
+            throw new PlaceException("El destino elegido no existe");
         }
 
         List<Hotel> hotels = hotelRepository.findAll();
