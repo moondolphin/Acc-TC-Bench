@@ -2,6 +2,7 @@ package com.yesi.api_exercise.service.impl;
 
 import com.yesi.api_exercise.dto.request.FlightReservationRequestDTO;
 import com.yesi.api_exercise.dto.response.FlightReservationResponseDTO;
+import com.yesi.api_exercise.exception.PlaceException;
 import com.yesi.api_exercise.mapper.FlightReservationMapper;
 import com.yesi.api_exercise.model.FlightReservation;
 import com.yesi.api_exercise.repository.FlightRepository;
@@ -22,11 +23,11 @@ public class FlightReservationServiceImpl implements FlightReservationService {
     @Override
     public FlightReservationResponseDTO makeFlightReservation(FlightReservationRequestDTO flightReservationRequestDTO) {
         if (!flightRepository.existsByOrigin(flightReservationRequestDTO.flightReservation().origin())) {
-            throw new IllegalArgumentException("Origin not found");
+            throw new PlaceException("Origin not found");
         }
 
         if (!flightRepository.existsByDestination(flightReservationRequestDTO.flightReservation().destination())) {
-            throw new IllegalArgumentException("Destination not found");
+            throw new PlaceException("Destination not found");
         }
         log.info("Iniciando proceso de reserva para el usuario: ", flightReservationRequestDTO.userName(),
                 " Con destino a: ", flightReservationRequestDTO.flightReservation().destination());

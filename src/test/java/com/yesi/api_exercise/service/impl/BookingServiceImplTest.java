@@ -11,21 +11,18 @@ import com.yesi.api_exercise.repository.HotelRepository;
 import lombok.extern.slf4j.Slf4j;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
 
 @Slf4j
-// Anotación para activar Mockito con JUnit 5
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
 class BookingServiceImplTest {
 
     // @Mock crea una version "simulada" de nuestras dependencias
