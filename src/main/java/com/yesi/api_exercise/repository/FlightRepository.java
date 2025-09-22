@@ -6,5 +6,6 @@ import com.yesi.api_exercise.model.Flight;
 
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
-
+    boolean existsByOrigin(String origin);
+    boolean existsByDestination(String destination);
 }

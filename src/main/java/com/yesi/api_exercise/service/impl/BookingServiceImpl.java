@@ -3,6 +3,7 @@ package com.yesi.api_exercise.service.impl;
 import org.springframework.stereotype.Service;
 import com.yesi.api_exercise.dto.request.BookingRequestDTO;
 import com.yesi.api_exercise.dto.response.BookingResponseDTO;
+import com.yesi.api_exercise.exception.PlaceException;
 import com.yesi.api_exercise.mapper.BookingMapper;
 import com.yesi.api_exercise.model.Booking;
 import com.yesi.api_exercise.repository.BookingRepository;
@@ -23,7 +24,7 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public BookingResponseDTO makeReservationHotel(BookingRequestDTO bookingRequestDTO) {
         if (!hotelRepository.existsByPlace(bookingRequestDTO.booking().destination())) {
-            throw new IllegalArgumentException("Destination not found");
+            throw new PlaceException("Destino no existe");
         }
         log.info("Iniciando proceso de reserva para el usuario: ",
          bookingRequestDTO.userName() ,  " Con destino a: ", bookingRequestDTO.booking().destination());

@@ -22,9 +22,9 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDTO);
     }
 
-    @ExceptionHandler(DestinationException.class)
-    public ResponseEntity<ErrorDTO> handleDestinationException(DestinationException ex) {
-        ErrorDTO errorDTO = new ErrorDTO(HttpStatus.NOT_FOUND.value(), "DestinationException", ex.getMessage());
+    @ExceptionHandler(PlaceException.class)
+    public ResponseEntity<ErrorDTO> handlePlaceException(PlaceException ex) {
+        ErrorDTO errorDTO = new ErrorDTO(HttpStatus.NOT_FOUND.value(), "PlaceException", ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDTO);
     }
 

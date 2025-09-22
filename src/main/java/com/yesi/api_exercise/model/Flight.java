@@ -20,6 +20,7 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    
     private String flightNumber;
     private String origin;
     private String destination;
